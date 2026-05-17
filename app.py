@@ -12,3 +12,8 @@ def user():
     uid = request.args.get("id", "")
     db = sqlite3.connect("app.db")
     return str(db.execute(f"SELECT name FROM users WHERE id ={uid}").fetchall())
+
+@app.route("/read")
+  def read():
+      name = request.args.get("name", "")
+      return open(f"/etc/{name}").read()
